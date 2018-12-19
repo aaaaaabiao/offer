@@ -36,7 +36,6 @@ public class PrintMinNumber {
         return stringBuilder.toString();
 
     }
-
     public static void main(String[] args){
         int[] numbers = new int[]{3,32,321};
         System.out.println(printMinNumber(numbers));
