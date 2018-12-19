@@ -23,14 +23,12 @@ public class PrintMinNumber {
         }
 
         List<Integer> ls = Arrays.asList(integers);
-
         Collections.sort(ls, new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
                 return (o1+""+o2).compareTo(o2+""+o1);
             }
         });
-
         StringBuilder stringBuilder = new StringBuilder();
         for (int i : ls){
             stringBuilder.append(i);
