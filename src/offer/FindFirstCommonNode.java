@@ -1,5 +1,12 @@
 package offer;
-
+/**
+ * @version: V1.0
+ * @author: abiao
+ * @className: FindFirstCommonNode
+ * @packageName: offer
+ * @description: 链表的第一个公共节点
+ * @data: 2018/12/21
+ **/
 public class FindFirstCommonNode {
     public class ListNode {
         int val;
@@ -9,7 +16,7 @@ public class FindFirstCommonNode {
             this.val = val;
         }
     }
-    public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {
+    public ListNode findFirstCommonNode(ListNode pHead1, ListNode pHead2) {
         int len1 = 0;
         int len2 = 0;
         ListNode tmp1 = pHead1;
