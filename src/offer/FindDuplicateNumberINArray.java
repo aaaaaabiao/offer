@@ -1,5 +1,12 @@
 package offer;
-
+/**
+ * @version: V1.0
+ * @author: abiao
+ * @className: FindDuplicateNumberINArray
+ * @packageName: offer
+ * @description: 数组中重复的数字
+ * @data: 2019/1/3
+ **/
 public class FindDuplicateNumberINArray {
     public static boolean duplicate(int numbers[],int length,int [] duplication) {
         if (numbers == null ||numbers.length == 0) return false;
