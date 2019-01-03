@@ -1,5 +1,12 @@
 package offer;
-
+/**
+ * @version: V1.0
+ * @author: abiao
+ * @className: StrToInt
+ * @packageName: offer
+ * @description: 把字符串转为整数
+ * @data: 2019/1/3
+ **/
 public class StrToInt {
     public static int strToInt(String str) {
         if (str == null || str.length() == 0) return 0;
