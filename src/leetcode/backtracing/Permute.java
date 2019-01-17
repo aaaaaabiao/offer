@@ -7,7 +7,7 @@ import java.util.List;
  * @author: abiao
  * @className: Permute
  * @packageName: leetcode.backtracing
- * @description: 组合
+ * @description: 排列
  * @data: 2019/1/17
  **/
 public class Permute {
