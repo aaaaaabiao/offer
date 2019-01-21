@@ -4,7 +4,7 @@ package leetcode.dp;
  * @author: abiao
  * @className: IntegerBreak
  * @packageName: leetcode.dp
- * @description: 数组区间
+ * @description: 分割整数
  * @data: 2019/1/21
  **/
 public class IntegerBreak {
