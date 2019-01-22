@@ -29,7 +29,6 @@ public class FindLongestChain {
         }
         return res;
     }
-
     public static void main(String[] args){
         int[][] pairs = new int[][]{{1,2},{2,3},{3,4}};
         System.out.println(findLongestChain(pairs));
