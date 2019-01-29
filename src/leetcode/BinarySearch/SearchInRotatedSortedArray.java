@@ -5,7 +5,7 @@ package leetcode.BinarySearch;
  * @author: abiao
  * @className: SearchInRotatedSortedArray
  * @packageName: leetcode.BinarySearch
- * @description: 在循环数组中找到目标值
+ * @description: 在旋转数组中找到目标值
  * @data: 2019/1/29
  **/
 public class SearchInRotatedSortedArray {
