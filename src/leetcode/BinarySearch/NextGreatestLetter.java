@@ -23,8 +23,25 @@ public class NextGreatestLetter {
         return target < letters[letters.length-1] ? letters[l] : letters[0];
     }
 
+
+    public static char nextGreatestLetter1(char[] letters, char target) {
+        int n = letters.length;
+        int l = 0, h = n - 1;
+        while (l <= h) {
+            int m = l + (h - l) / 2;
+            if (letters[m] <= target) {
+                l = m + 1;
+            } else {
+                h = m - 1;
+            }
+        }
+        return l < n ? letters[l] : letters[0];
+    }
+
     public static void main(String[] args){
         char[] letters = new char[]{'c','f','j'};
         System.out.println(nextGreatestLetter(letters,'c'));
+        char[] letters1 = new char[]{'a','c','f','j','k'};
+        System.out.println(nextGreatestLetter1(letters1,'d'));
     }
 }
