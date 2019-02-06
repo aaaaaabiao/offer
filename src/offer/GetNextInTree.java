@@ -4,7 +4,13 @@ package offer;
  * @author: abiao
  * @className: GetNextInTree
  * @packageName: offer
- * @description: 二叉树的下一个节点
+ * @description: 给定一个二叉树和其中的一个结点，
+ *               请找出中序遍历顺序的下一个结点并且返回。
+ *               注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针
+ *               1.右子树为空,下一个节点为右子树最左节点
+ *               2.右子树为空
+ *                  1.如果是父节点的左子树，则下一个节点其是父节点
+ *                  2.如果是父节点的右子树，则向上找到第一个为左节点的节点
  * @data: 2019/1/8
  **/
 public class GetNextInTree {
@@ -36,7 +42,7 @@ public class GetNextInTree {
             TreeLinkNode parent = pNode.next;
 
             while (parent != null && parent.right == cur){
-                //如果是父节点的右子树，需要向上找到第一个为左节点的节点
+                //如果是父节点的右子树，需要向上找到第一个有左子树的节点
                 cur = parent;
                 parent = parent.next;
             }
