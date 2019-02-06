@@ -31,11 +31,11 @@ public class ReConstructBinaryTree {
 
         int rootValue = pre[preStart];
         TreeNode root = new TreeNode(rootValue);
+        //以rootValue为中点，拆分成2个部分。
         int inRootIndex = inStart;
         while (in[inRootIndex] != rootValue){
             inRootIndex++;
         }
-
         int leftc = inRootIndex - inStart;
         root.left = ConstructCore(pre,preStart+1,preStart+leftc,in,inStart,inRootIndex-1);
         root.right = ConstructCore(pre,preStart+leftc+1,preEnd,in,inRootIndex+1,inEnd);
