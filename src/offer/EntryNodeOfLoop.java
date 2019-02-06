@@ -62,7 +62,7 @@ public class EntryNodeOfLoop {
         ListNode res = new ListNode(-1);
         while (true){
             ListNode t1 = h;
-            ListNode t2 = p;
+            ListNode t2 = p; 
             h = h.next;
             p = p.next;
             t1.next = t2;
