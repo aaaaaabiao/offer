@@ -5,7 +5,7 @@ package leetcode.list;
  * @author: abiao
  * @className: SortList
  * @packageName: leetcode.list
- * @description: 链表排序
+ * @description: 链表排序,使用归并排序
  * @data: 2019/2/8
  **/
 
@@ -20,9 +20,8 @@ public class SortList {
         if (head == null || head.next == null){
             return head;
         }
-
+        
         //1.找出中间节点
-
         ListNode p1 = head;
         ListNode p2 = head;
         ListNode pre = null;
@@ -67,6 +66,65 @@ public class SortList {
         return dumb.next;
     }
 
+    //使用插入排序排序一个链表
+    public static ListNode insertionSortList(ListNode head) {
+        ListNode dumb = new ListNode(0);
+        ListNode cur = head;
+        ListNode pre = dumb;
+        pre.next = cur;
+
+        //外层循环有个删除操作。要记录pre,next
+        while (cur != null){
+            ListNode next = cur.next;
+            //内层循环有个插入操作,要得到per,cur
+            ListNode p = dumb.next;
+            ListNode pre1 = dumb;
+            while (p.next != null && p.val < cur.val){
+                pre1 = pre1.next;
+                p = p.next;
+            }
+
+            if (p != cur || pre1 == dumb){
+                //cur节点需要动
+                //删除
+                pre.next = next;
+                //插入,插入到pre1到p之间
+                cur.next = p;
+                pre1.next = cur;
+            }
+
+            //设置下一步迭代的值
+            if (pre.next == cur){
+                pre = pre.next;
+            }
+            cur = next;
+        }
+
+        return dumb.next;
+    }
+
+
+
+    //模板
+    public ListNode listTmplate(ListNode head) {
+        ListNode dumb = new ListNode(0);//哨兵元素
+        ListNode cur = head;//当前元素
+        dumb.next = cur;
+        ListNode pre = dumb;//前一元素
+        while (cur != null){
+            ListNode next = cur.next;
+            //如果要这个过程要改变cur.next。那么cur = cur.next就不会正确了。如何解决这个问题？
+            //这时候就能对cur为所欲为的处理了
+
+            pre = cur;
+            cur = next;
+
+
+        }
+
+        return null;
+    }
+
 
     public static void main(String[] args){
         ListNode l1 = new ListNode(3);
@@ -79,7 +137,8 @@ public class SortList {
         l2.next = l3;
         l3.next = l4;
         l4.next = l5;
-        ListNode res = sortList(l1);
+//        ListNode res = sortList(l1);
+        ListNode res1 = insertionSortList(l1);
         int a = 0;
     }
 }
