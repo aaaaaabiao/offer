@@ -4,7 +4,7 @@ package leetcode.BinarySearch;
  * @author: abiao
  * @className: MyPow
  * @packageName: leetcode.BinarySearch
- * @description: 求次方
+ * @description: 求次方。
  * @data: 2019/2/16
  **/
 public class MyPow {
@@ -27,6 +27,7 @@ public class MyPow {
     public static double myPow1(double x, int n) {
         if(n == 0)
             return 1;
+        //处理负数最大值转正数溢出的情况
         if(n == Integer.MIN_VALUE){
             return myPow1(x*x, n/2);
         }
