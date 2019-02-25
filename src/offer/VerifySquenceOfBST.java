@@ -10,7 +10,8 @@ package offer;
 public class VerifySquenceOfBST {
     public static boolean verifySquenceOfBST(int [] sequence) {
         if (sequence.length == 0) return false;
-        return core(sequence,0,sequence.length-1);
+//        return core(sequence,0,sequence.length-1);
+        return verify(sequence,0,sequence.length-1);
     }
 
     public static boolean core(int[] sequence,int start, int end){
@@ -48,6 +49,23 @@ public class VerifySquenceOfBST {
                 return core(sequence,start,p);
             }
         }
+    }
+
+    public static boolean verify(int[] sequence,int start, int end){
+        if (end - start <= 1) return true;
+        int rootValue = sequence[end];
+        int pos = start;
+        while (pos < end && sequence[pos] <= rootValue){
+            pos++;
+        }
+
+        for (int i = pos; i < end; i++){
+            if (sequence[i] <= rootValue){
+                return false;
+            }
+        }
+
+        return verify(sequence,start,pos-1) && verify(sequence,pos+1,end);
     }
 
 
