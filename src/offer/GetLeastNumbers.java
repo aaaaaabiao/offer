@@ -42,6 +42,7 @@ public class GetLeastNumbers {
     }
 
 
+    //快速排序思想解决
     public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
         ArrayList<Integer> ret = new ArrayList();
         if(input == null || input.length == 0 || k > input.length) return ret;
