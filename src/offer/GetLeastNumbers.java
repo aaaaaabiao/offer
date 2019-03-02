@@ -41,9 +41,64 @@ public class GetLeastNumbers {
         return new ArrayList<>(maxHeap);
     }
 
+
+    public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
+        ArrayList<Integer> ret = new ArrayList();
+        if(input == null || input.length == 0 || k > input.length) return ret;
+        int n = findMinkNums(input,k);
+        for(int i = 0; i < k; i++){
+            ret.add(input[i]);
+        }
+        return ret;
+    }
+
+    public int findMinkNums(int[] input,int k){
+        int l = 0;
+        int h = input.length - 1;
+        while(l < h){
+            int mid = partion(input,l,h);
+            if(mid == k-1){
+                return input[mid];
+            }else if(k-1 < mid){
+                h = mid - 1;
+            }else{
+                l = mid + 1;
+            }
+        }
+        return l;
+    }
+
+    public int partion(int[] input,int l,int h){
+        int i = l;
+        int j = h+1;
+        int val = input[l];
+
+        while(true){
+            while(input[++i] <= val && i < h);
+            while(input[--j] >= val && j > l);
+
+            if(i >= j){
+                break;
+            }
+            swap(input,i,j);
+        }
+
+        swap(input,l,j);
+        return j;
+    }
+
+    public void swap(int[] input,int i,int j){
+        int tmp = input[i];
+        input[i] = input[j];
+        input[j] = tmp;
+    }
+
     public static void main(String[] args){
         int[] input = new int[]{4,5,1,6,2,7,3,8};
         List ret = getLeastNumbers(input,4);
+
+        GetLeastNumbers getLeastNumbers = new GetLeastNumbers();
+        List ret1 = getLeastNumbers.GetLeastNumbers_Solution(input,4);
         int a = 0;
     }
 }
