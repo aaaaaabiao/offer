@@ -42,10 +42,32 @@ public class ReOrderArray {
             }
         }
     }
+
+    public static void reOrderArray1(int [] array) {
+        if(array == null || array.length == 0)return ;
+        int p = 0;
+        int len = array.length;
+        for(int i = 0; i < len; i++){
+            if(array[i] % 2 == 0){
+                p = i;
+                break;
+            }
+        }
+        for(int i = p; i < len; i++){
+            int val = array[i];
+            if(val % 2 != 0){
+                for(int j = i; j > p; j--){
+                    array[j] = array[j-1];
+                }
+                array[p++] = val;
+            }
+
+        }
+    }
     
     public static void main(String[] args){
         int[] array = new int[]{1,2,3,4,5,6};
-        reOrderArray(array);
+        reOrderArray1(array);
         for (int i = 0; i < array.length; i++){
             System.out.println(array[i]);
         }

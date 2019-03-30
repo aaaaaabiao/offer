@@ -1,4 +1,8 @@
 package offer;
+
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+
 /**
  * @version: V1.0
  * @author: abiao
@@ -24,7 +28,38 @@ public class Add {
         return num1;
     }
 
+
+    public static ArrayList<Integer> maxInWindows(int [] num, int size)
+    {
+        ArrayList<Integer> ret = new ArrayList();
+        if(num == null || size > num.length - 1) return ret;
+        int len = num.length;
+        PriorityQueue<Integer> queue = new PriorityQueue<>((o1,o2)-> o2-o1);
+        int i = 0;
+        int j = size-1;
+        for(int n = 0; n < size; n++){
+            queue.add(num[n]);
+        }
+        ret.add(queue.peek());
+        i++;
+        j++;
+        while(j < len){
+            queue.remove(num[i]);
+            queue.add(num[j]);
+            ret.add(queue.peek());
+            i++;
+            j++;
+        }
+
+        return ret;
+    }
+
     public static void main(String[] args){
+        int[] data = new int[]{2,3,4,2,6,2,5,1};
+        maxInWindows(data,3);
         System.out.println(add(0,1));
     }
+
+
+
 }

@@ -10,6 +10,7 @@ package offer;
  **/
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.TreeSet;
 
 public class Permutation {
@@ -41,10 +42,41 @@ public class Permutation {
     }
 
 
-    public static void main(String[] args){
-        String str = "aba";
-        ArrayList ret = permutation(str);
+    public static ArrayList<String> permutation1(String str) {
+        ArrayList ret = new ArrayList();
+        if(str == null || str.length() == 0) return ret;
+        StringBuffer buffer = new StringBuffer();
+        char[] chs = str.toCharArray();
+        Arrays.sort(chs);
+        boolean[] visit = new boolean[str.length()];
+        backtracing(ret,visit,buffer,new String(chs));
+        return ret;
 
+    }
+
+    public static void backtracing(ArrayList<String> ret, boolean[] visit,StringBuffer s,String str){
+        int len = str.length();
+        if(s.length() == len){
+            ret.add(s.toString());
+            return;
+        }
+
+        for(int i = 0; i < len; i++){
+            if(visit[i]) continue;
+            if(i > 0 && str.charAt(i) == str.charAt(i-1) && !visit[i-1]) continue;
+            s.append(str.charAt(i));
+            visit[i] = true;
+            backtracing(ret,visit,s,str);
+            visit[i] = false;
+            s.deleteCharAt(s.length()-1);
+        }
+    }
+
+
+    public static void main(String[] args){
+        String str = "a";
+//        ArrayList ret = permutation(str);
+        ArrayList ret1 = permutation1(str);
         int a = 0;
     }
 }

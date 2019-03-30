@@ -1,5 +1,8 @@
 package offer;
 
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * @version: V1.0
  * @author: abiao
@@ -45,6 +48,22 @@ public class DeleteDuplication {
         return pHead;
     }
 
+    public static ListNode deleteDuplication1(ListNode pHead) {
+
+        if (pHead == null || pHead.next == null) return pHead;
+        ListNode next = pHead.next;
+        if (pHead.val == pHead.val){
+            while (next != null && pHead.val == next.val){
+                next = next.next;
+            }
+            return deleteDuplication1(next);
+        }else{
+            pHead.next = deleteDuplication(pHead.next);
+            return pHead;
+        }
+    }
+
+
 
     public static void main(String[] args){
         ListNode l1 = new ListNode(1);
@@ -62,8 +81,8 @@ public class DeleteDuplication {
         l5.next = l6;
         l6.next = l7;
         l7.next = null;
-
-        ListNode res = deleteDuplication(l1);
+        ConcurrentHashMap map = new ConcurrentHashMap();
+        ListNode res = deleteDuplication1(l1);
 
         int a = 0;
 

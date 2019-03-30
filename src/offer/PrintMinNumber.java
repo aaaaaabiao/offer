@@ -8,6 +8,8 @@ package offer;
  * @description: 把数组排成最小的数
  * @data: 2018/12/19
  **/
+import javafx.util.converter.NumberStringConverter;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -23,12 +25,7 @@ public class PrintMinNumber {
         }
 
         List<Integer> ls = Arrays.asList(integers);
-        Collections.sort(ls, new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return (o1+""+o2).compareTo(o2+""+o1);
-            }
-        });
+        Collections.sort(ls, (s1,s2) -> (s1+s2+"").compareTo(s2+s1+""));
         StringBuilder stringBuilder = new StringBuilder();
         for (int i : ls){
             stringBuilder.append(i);
@@ -39,5 +36,6 @@ public class PrintMinNumber {
     public static void main(String[] args){
         int[] numbers = new int[]{3,32,321};
         System.out.println(printMinNumber(numbers));
+
     }
 }

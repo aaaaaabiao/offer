@@ -50,6 +50,24 @@ public class FindKthToTail {
         }
         return k > i ? null : p2;
     }
+
+
+    public static ListNode ffindKthToTail3(ListNode head,int k) {
+        ListNode d = new ListNode(0);
+        d.next = head;
+        ListNode l1 = d;
+        ListNode l2 = d;
+        while (k > 0 && l1 != null){
+            l1 = l1.next;
+            k--;
+        }
+        if (k >= 0 && l1 == null) return null;
+        while (l1 != null){
+            l1 = l1.next;
+            l2 = l2.next;
+        }
+        return l2;
+    }
      public static void main(String[] args){
         ListNode listNode1 = new ListNode(1);
          ListNode listNode2 = new ListNode(2);
@@ -62,6 +80,7 @@ public class FindKthToTail {
          listNode3.next = listNode4;
          listNode4.next = listNode5;
 
-         FindKthToTail.ffindKthToTail(listNode1,1);
+         ListNode ret = FindKthToTail.ffindKthToTail3(listNode1,6);
+         int a = 0;
      }
 }

@@ -1,6 +1,8 @@
 package offer;
 
 
+import java.util.Stack;
+
 /**
  * @version: V1.0
  * @author: abiao
@@ -43,11 +45,29 @@ public class IsPopOrder {
         return true;
     }
 
+    public static boolean IsPopOrder(int [] pushA,int [] popA) {
+        Stack<Integer> stack = new Stack();
+        int p = 0;
+        for(int i = 0; i < pushA.length; i++){
+            if(pushA[i] == popA[p]){
+                p++;
+                while(p < popA.length && !stack.isEmpty() && stack.peek() == popA[p]){
+                    p++;
+                    stack.pop();
+                }
+            }else{
+                stack.push(pushA[i]);
+            }
+        }
+
+        return stack.isEmpty();
+    }
+
     public static void main(String[] args){
         int[] push = {1,2,3,4,5};
         int[] pop = {4,5,3,2,1};
         int[] pop1 = {4,3,5,1,2};
-        System.out.println(isPopOrder(push,pop));
+        System.out.println(IsPopOrder(push,pop));
         System.out.println(isPopOrder(push,pop1));
     }
 }
