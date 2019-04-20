@@ -1,6 +1,8 @@
 package leetcode.dp;
 
 
+import java.util.Arrays;
+
 /**
  * @version: V1.0
  * @author: abiao
@@ -37,6 +39,24 @@ public class LongestPalindromeSubseq {
             }
         }
         return p[len-1][0];
+    }
+
+
+    public static int longestPalindromeSubseqV1(String s){
+        int dp[][] = new int[s.length()][s.length()];
+
+        for (int j = 0; j < s.length(); j++){
+            for (int i = j; i >=0; i--){
+                if (i == j){
+                    dp[i][j] = 1;
+                }else if (s.charAt(i) == s.charAt(j)){
+                    dp[i][j] = dp[i+1][j-1]+2;
+                }else{
+                    dp[i][j] = Math.max(dp[i+1][j],dp[i][j-1]);
+                }
+            }
+        }
+        return dp[0][s.length()-1];
     }
 
     /*
@@ -120,6 +140,50 @@ public class LongestPalindromeSubseq {
     }
 
 
+    public static String longestPalindrome1(String s) {
+
+        if(s == null || s.length() == 0) return s;
+        int len = s.length();
+        int[][] dp = new int[len][len];
+        int max = 1;
+        int p = 0;
+        int q = 0;
+        for(int i = len - 1; i >= 0; i--){
+            for(int j = i; j < len; j++){
+                char c1 = s.charAt(i);
+                char c2 = s.charAt(j);
+                if(i == j){
+                    dp[i][j] = 1;
+                    continue;
+                }
+                if(j - i == 1 && c1 == c2){
+                    dp[i][j] = 2;
+                    if(dp[i][j] > max){
+                        max = dp[i][j];
+                        p = i;
+                        q = j;
+                    }
+                    continue;
+                }
+                if(c1 == c2 && dp[i+1][j-1] > 0){
+                    dp[i][j] = dp[i+1][j-1] + 2;
+                    if(dp[i][j] > max){
+                        max = dp[i][j];
+                        p = i;
+                        q = j;
+                    }
+                }else{
+                    dp[i][j] = 0;
+                }
+            }
+        }
+
+        return s.substring(p,q+1);
+    }
+
+
+
+
     public static void print(int[][] a){
         System.out.println();
         for (int i = 0; i < a.length; i++){
@@ -130,12 +194,45 @@ public class LongestPalindromeSubseq {
         }
         System.out.println();
     }
+
+
+    public static int threeSumClosest(int[] nums, int target) {
+        if(nums == null || nums.length < 3) return -1;
+        Arrays.sort(nums);
+        int len = nums.length;
+        int diff = Integer.MAX_VALUE;
+        for(int i = 0; i < len-2; i++){
+            if(i > 0 && nums[i-1] == nums[i]) continue;
+            int p = i+1;
+            int q = len-1;
+            int t = target-nums[i];
+            while(p < q){
+                int sum = nums[p] + nums[q];
+                if(sum <= t){
+                    p++;
+                }else{
+                    q--;
+                }
+                int val = sum - t;
+                if(Math.abs(val) < Math.abs(diff)){
+                    diff = val;
+                }
+                if(diff == 0) return target;
+            }
+        }
+
+        return target+diff;
+    }
     public static void main(String[] args){
-        System.out.println(longestPalindromeSubseq("aaabaaaaaaaa"));
-        System.out.println(longestPalindromeSubstr("aaabaaaaaaaa"));
-        System.out.println(longestPalindromeSubstrRetStr("aaabaaaaaaaa"));
-        System.out.println(longestPalindromeSubstr("aaaa"));
-        System.out.println(longestPalindromeSubstrRetStr("aaaa"));
+//        System.out.println(longestPalindromeSubseq("aaabaaaaaaaa"));
+//        System.out.println(longestPalindromeSubstr("aaabaaaaaaaa"));
+//        System.out.println(longestPalindromeSubstrRetStr("aaabaaaaaaaa"));
+//        System.out.println(longestPalindromeSubstr("aaaa"));
+//        System.out.println(longestPalindromeSubstrRetStr("aaaa"));
+//        System.out.println(longestPalindrome1("cbbd"));
+//        manacher("abccbd");
+
+        threeSumClosest(new int[]{0,2,1,-3},1);
 
     }
 

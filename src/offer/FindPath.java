@@ -5,13 +5,23 @@ import java.time.temporal.ValueRange;
 import java.util.*;
 
 /**
- * @version: V1.0
- * @author: abiao
- * @className: FindPath
- * @packageName: offer
- * @description: 输入一颗二叉树的跟节点和一个整数，打印出二叉树中结点值的和为输入整数的所有路径(数组长度大的数组靠前)
- * @data: 2018/12/14
- **/
+ ``````````````````````````````````题目描述```````````````````````````````````
+ 输入一颗二叉树的跟节点和一个整数，打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。
+ (注意: 在返回值的list中，数组长度大的数组靠前)
+ ````````````````````````````````````例子`````````````````````````````````````
+ 
+ ````````````````````````````````````链接`````````````````````````````````````
+ https://www.nowcoder.com/practice/b736e784e3e34731af99065031301bca?tpId=13&tqId=11177&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+ ``````````````````````````````````解题思路```````````````````````````````````
+ 方法：回溯。
+ 描述：找到路径的条件为target==0 && root是叶子节点
+ ````````````````````````````````````思考`````````````````````````````````````
+ 
+ `````````````````````````````````````````````````````````````````````````````
+ data：2019/4/4
+ author:abiao
+ `````````````````````````````````````````````````````````````````````````````
+ * **/
 public class FindPath {
     public class TreeNode {
         int val = 0;
@@ -24,54 +34,24 @@ public class FindPath {
         }
     }
 
-    public ArrayList<ArrayList<Integer>> findPath(TreeNode root, int target){
-        ArrayList<ArrayList<Integer>> ret = core(root,target);
+    public ArrayList<ArrayList<Integer>> findPath(TreeNode root,int target) {
+        ArrayList<ArrayList<Integer>> ret = new ArrayList<>();
+        List<Integer> ls = new ArrayList<>();
 
-        Collections.sort(ret, new Comparator<ArrayList<Integer>>() {
-            @Override
-            public int compare(ArrayList<Integer> o1, ArrayList<Integer> o2) {
-                return o2.size() - o1.size();
-            }
-        });
-
+        backtracing(ret,ls,root,target);
         return ret;
     }
-
-    public ArrayList<ArrayList<Integer>> core(TreeNode root, int target) {
-
-        ArrayList<ArrayList<Integer>> ret = new ArrayList<>();
-        if (root == null) return ret;
-        //尾巴节点判断一下路径是否符合
-        if (root.left == null && root.right == null){
-            if (target == root.val) {
-                ArrayList<Integer> array = new ArrayList<>();
-                array.add(root.val);
-                ret.add(array);
-                return ret;
-            }else {
-                return null;
-            }
+    public void backtracing(ArrayList<ArrayList<Integer>> ret,List<Integer> ls,TreeNode root, int target){
+        if (root == null) return;
+        ls.add(root.val);
+        target -= root.val;
+        if (target == 0 && root.left == null && root.right == null){
+            ret.add(new ArrayList<>(ls));
+        }else {
+            backtracing(ret,ls,root.left,target);
+            backtracing(ret,ls,root.right,target);
         }
-
-        if (root.left != null){
-            ArrayList<ArrayList<Integer>> leftRet = core(root.left,target-root.val);
-            if (leftRet != null){
-                for (ArrayList<Integer> arrayList : leftRet){
-                    arrayList.add(0,root.val);
-                }
-                ret.addAll(leftRet);
-            }
-        }
-        if (root.left != null){
-            ArrayList<ArrayList<Integer>> rightRet = core(root.right,target-root.val);
-            if (rightRet != null){
-                for (ArrayList<Integer> arrayList : rightRet){
-                    arrayList.add(0,root.val);
-                }
-                ret.addAll(rightRet);
-            }
-        }
-        return ret;
+        ls.remove(ls.size()-1);
     }
 
     public static void main(String[] args){
@@ -88,6 +68,7 @@ public class FindPath {
 
         left.left = ll;
         left.right = lr;
+
 
 
         List ret = findPath.findPath(treeNode,22);

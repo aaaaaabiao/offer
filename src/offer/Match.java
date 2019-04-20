@@ -1,4 +1,8 @@
 package offer;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  ``````````````````````````````````题目描述```````````````````````````````````
  请实现一个函数用来匹配包括'.'和'*'的正则表达式。
@@ -27,9 +31,8 @@ package offer;
  方法:动态规划
  描述：dp[i][j]:代表字符串前i个字符与模式前j个字符是否匹配。
  转移方程为:
- 1.s[i] == p[j] || p[j] == '.' ==> dp[i][j] = dp[i-1][j-1]
- 2.p[j] == '*'
-    如果s[i] == p[j-1] || p[j] == '.'
+e 4oi 2.p[j] == '*'
+    如果s[i] == p[j-1] || p[j-1] == '.'
         dp[i][j] = dp[i-1][j] 代表*匹配一个或多个字符。
                     || dp[i][j-1]代表*匹配一字符
                     || dp[i][j-2]代表*匹配空字符
@@ -110,5 +113,6 @@ public class Match {
     public static void main(String[] args){
 //        System.out.println(match("aab".toCharArray(),"c*a*b".toCharArray()));
         System.out.println(match("aab".toCharArray(),"c*a*b".toCharArray()));
+        ArrayList<String> ls = new ArrayList<>();
     }
 }

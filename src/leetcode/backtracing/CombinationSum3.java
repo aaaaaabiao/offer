@@ -42,5 +42,10 @@ public class CombinationSum3 {
 
         List finalRet = combinationSum3(3,9);
         int a;
+        int k = 5;
+        while (k > 0){
+            System.out.println(k);
+            k--;
+        }
     }
 }

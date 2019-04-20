@@ -7,9 +7,14 @@ import java.util.Arrays;
  * @className: FindLongestChain
  * @packageName: leetcode.dp
  * @description: 一组整数对能够构成的最长链
+ * 输入: [[1,2], [2,3], [3,4]]
+ * 输出: 2
+ * 解释: 最长的数对链是 [1,2] -> [3,4]
  * @data: 2019/1/22
  **/
 public class FindLongestChain {
+
+    //动态规划解法
     public static int findLongestChain(int[][] pairs) {
         if (pairs == null || pairs.length == 0) return 0;
         int res = 1;
@@ -29,6 +34,11 @@ public class FindLongestChain {
         }
         return res;
     }
+
+    //贪心解法
+
+
+
     public static void main(String[] args){
         int[][] pairs = new int[][]{{1,2},{2,3},{3,4}};
         System.out.println(findLongestChain(pairs));

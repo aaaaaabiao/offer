@@ -38,6 +38,16 @@ public class CanJump {
         return reach >= len-1;
     }
 
+
+    public static boolean canJump2(int[] nums) {
+        int len = nums.length;
+        int canReach = len - 1;//代表所能到达的最远位置
+        for (int i = len-1; i >= 0; i--){
+            if(nums[i] + i >= canReach) canReach = i;
+        }
+        return canReach == 0;
+    }
+
     public static void main(String[] args){
         int[] nums = new int[]{2,3,1,1,4};
         int[] nums1 = new int[]{3,2,1,0,4};
@@ -45,5 +55,7 @@ public class CanJump {
         System.out.println(canJump(nums1));
         System.out.println(canJump1(nums));
         System.out.println(canJump1(nums1));
+        System.out.println(canJump2(nums1));
+        System.out.println(canJump2(nums));
     }
 }

@@ -38,15 +38,12 @@ public class FindKthLargest {
                 h = j-1;
             }
         }
-
         return nums[k];
     }
 
     private int partition(int [] nums, int l, int h){
-
         int i = l;
         int j = h+1;
-
         while (true){
             while (nums[++i] < nums[l] && i < h);
             while (nums[--j] > nums[l] && j > l);

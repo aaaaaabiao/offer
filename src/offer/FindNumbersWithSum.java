@@ -6,76 +6,24 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 /**
- * @version: V1.0
- * @author: abiao
- * @className: FindNumbersWithSum
- * @packageName: offer
- * @description: 在排序数组中找到两数之和等于sum，如果有多个，要求找到乘积最小的两数。
- * @data: 2018/12/28
- **/
+ ``````````````````````````````````题目描述```````````````````````````````````
+ 输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。
+ ````````````````````````````````````例子`````````````````````````````````````
+ 
+ ````````````````````````````````````链接`````````````````````````````````````
+ https://www.nowcoder.com/practice/390da4f7a00f44bea7c2f3d19491311b?tpId=13&tqId=11195&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+ ``````````````````````````````````解题思路```````````````````````````````````
+ 方法：双指针
+ 描述：
+ ````````````````````````````````````思考`````````````````````````````````````
+ 乘积最小：相差越大乘积越小。所以第一个符合条件的乘积肯定越小
+ `````````````````````````````````````````````````````````````````````````````
+ data：2019/4/6
+ author:abiao
+ `````````````````````````````````````````````````````````````````````````````
+ * **/
 public class FindNumbersWithSum {
-    public ArrayList<Integer> findNumbersWithSum1(int [] array, int sum) {
-
-        Set<Integer> set = new HashSet<>();
-        ArrayList<Integer> arrayList = new ArrayList<>(2);
-        int res = Integer.MAX_VALUE;
-        for (int val : array){
-            int need = sum - val;
-            if (set.contains(need)){
-                int product = need * val;
-                if (product < res){
-                    res = product;
-                    arrayList.set(0,need < val ? need : val);
-                    arrayList.set(1,need < val ? val : need);
-                }
-
-            }
-            set.add(val);
-        }
-        return arrayList;
-    }
-
     public static ArrayList<Integer> findNumbersWithSum(int [] array, int sum) {
-
-        if (array.length < 2 || array == null){
-            return new ArrayList<>();
-        }
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        int n1 = 0;
-        int n2 = 0;
-        int start = 0;
-        int end = array.length - 1;
-        int res = Integer.MAX_VALUE;
-        boolean flag = false;
-        while (start < end){
-            int n = array[start] + array[end];
-            if (n == sum){
-                int product = array[start] * array[end];
-                if (product < res){
-                    res = product;
-                    n1 = array[start];
-                    n2 = array[end];
-                    flag = true;
-                }
-                start++;
-                end--;
-            }else if (n < sum){
-                start++;
-            }else {
-                end--;
-            }
-        }
-
-        if (flag){
-            arrayList.add(n1);
-            arrayList.add(n2);
-        }
-        return arrayList;
-    }
-
-
-
-    public static ArrayList<Integer> findNumbersWithSum2(int [] array, int sum) {
 
         if (array.length < 2 || array == null){
             return new ArrayList<>();

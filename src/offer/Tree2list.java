@@ -1,14 +1,27 @@
 package offer;
 
 /**
- * @version: V1.0
- * @author: abiao
- * @className: 将二叉搜索树转成一个排序的双向链表
- * @packageName: offer
- * @description: 
- * @data: 2018/12/14
- **/
+ ``````````````````````````````````题目描述```````````````````````````````````
+ 输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。要求不能创建任何新的结点，只能调整树中结点指针的指向。
+ ````````````````````````````````````例子`````````````````````````````````````
+
+ ````````````````````````````````````链接`````````````````````````````````````
+ https://www.nowcoder.com/practice/947f6eb80d944a84850b0538bf0ec3a5?tpId=13&tqId=11179&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+ ``````````````````````````````````解题思路```````````````````````````````````
+ 方法：二叉搜索树的中序遍历即为一个从小到大的排序序列
+ 描述：pre来代表前一个节点。中序遍历。更新pre。
+      head代表第一个节点，
+ ````````````````````````````````````思考`````````````````````````````````````
+
+ `````````````````````````````````````````````````````````````````````````````
+ data：2019/4/5
+ author:abiao
+ `````````````````````````````````````````````````````````````````````````````
+ * **/
 public class Tree2list {
+
+    TreeNode pre = null;
+    TreeNode head = null;
 
     public class TreeNode {
         int val = 0;
@@ -20,33 +33,23 @@ public class Tree2list {
 
         }
     }
+
     public TreeNode Convert(TreeNode pRootOfTree) {
+        inOrder(pRootOfTree);
+        return head;
+    }
 
-        if (pRootOfTree == null) return null;
-
-        if (pRootOfTree.left != null){
-            TreeNode left = Convert(pRootOfTree.left);
-            //找到最右节点
-            while (left.right != null){
-                left = left.right;
-            }
-            left.right = pRootOfTree;
-            pRootOfTree.left = left;
+    public void inOrder(TreeNode root){
+        if (root == null) return;
+        inOrder(root.left);
+        root.left = pre;
+        if (pre != null){
+            pre.right = root;
         }
-
-        if (pRootOfTree.right != null){
-            TreeNode right = Convert(pRootOfTree.right);
-            //找到最左节点
-            while (right.left != null){
-                right = right.left;
-            }
-            right.left = pRootOfTree;
-            pRootOfTree.right = right;
+        pre = root;
+        if (head == null){
+            head = root;
         }
-
-        while (pRootOfTree.left != null){
-            pRootOfTree = pRootOfTree.left;
-        }
-        return pRootOfTree;
+        inOrder(root.right);
     }
 }
