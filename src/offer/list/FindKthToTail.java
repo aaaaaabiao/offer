@@ -1,4 +1,4 @@
-package offer;
+package offer.list;
 
 /**
  ``````````````````````````````````题目描述```````````````````````````````````
@@ -47,7 +47,6 @@ public class FindKthToTail {
         return p2;
     }
 
-
     public static ListNode ffindKthToTail2(ListNode head,int k) {
         ListNode p1 = head;
         ListNode p2 = head;
@@ -90,7 +89,7 @@ public class FindKthToTail {
          listNode3.next = listNode4;
          listNode4.next = listNode5;
 
-         ListNode ret = FindKthToTail.ffindKthToTail3(listNode1,6);
+         ListNode ret = FindKthToTail.ffindKthToTail2(listNode1,5);
          int a = 0;
      }
 }

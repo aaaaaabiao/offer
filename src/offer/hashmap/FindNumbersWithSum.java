@@ -1,4 +1,4 @@
-package offer;
+package offer.hashmap;
 
 import java.util.ArrayList;
 

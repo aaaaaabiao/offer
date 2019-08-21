@@ -1,4 +1,4 @@
-package offer;
+package offer.twopoint;
 
 import java.util.ArrayList;
 import java.util.List;

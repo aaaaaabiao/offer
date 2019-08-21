@@ -1,4 +1,4 @@
-package offer;
+package offer.list;
 
 /**
  * @version: V1.0

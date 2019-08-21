@@ -1,4 +1,4 @@
-package offer;
+package offer.array;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +20,7 @@ import java.util.Set;
  author:abiao
  `````````````````````````````````````````````````````````````````````````````
  * **/
-public class Duplicate {
+public class ArrayDuplicateNumber {
     public boolean duplicate(int[] nums, int length, int[] duplication) {
         if(nums == null || nums.length == 0) return false;
         for (int i = 0; i < length;){
@@ -76,7 +76,7 @@ public class Duplicate {
 
     public static void main(String[] args){
         int[] nums = new int[]{2,2,3,5,6,1,4,5,3};
-        Duplicate duplicate = new Duplicate();
+        ArrayDuplicateNumber duplicate = new ArrayDuplicateNumber();
         for (int val : duplicate.allduplicate(nums)){
             System.out.println(val);
         }

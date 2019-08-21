@@ -1,4 +1,4 @@
-package offer;
+package offer.bit;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;

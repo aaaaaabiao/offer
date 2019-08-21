@@ -1,4 +1,4 @@
-package offer;
+package offer.list;
 
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @description: 删除链表中重复的元素
  * @data: 2019/1/8
  **/
-public class DeleteDuplication {
+public class DeleteDuplicationList {
     public static class ListNode {
         int val;
         ListNode next = null;
