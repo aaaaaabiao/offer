@@ -1,5 +1,7 @@
 package leetcode.BinaryTree;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -25,6 +27,7 @@ public class Traversal {
     //非递归先序遍历二叉树
     public static void nonRecursivePreOrder(TreeNode root){
         Stack<TreeNode> stack = new Stack();
+        //一直变换root
         while (root != null || !stack.isEmpty()){
             while (root != null){
                 stack.push(root);
@@ -59,6 +62,7 @@ public class Traversal {
     //非递归后续遍历
     public static void nonRecursivePostOrder(TreeNode root){
         Stack<TreeNode> stack = new Stack();
+        //最后一个访问的节点
         TreeNode lastVisit = null;
         while (root != null || !stack.isEmpty()){
             while (root != null){
@@ -67,7 +71,7 @@ public class Traversal {
             }
 
             TreeNode node = stack.peek();
-            //如果右子树为空或者右子树已经访问过了。就可以出栈。
+            //如果右子树为空或者右子树已经访问过了。就可以出栈,否则先遍历右子树
             if (!stack.isEmpty() && (node.right == null || node.right == lastVisit)){
                 TreeNode t = stack.pop();
                 System.out.println(t.val);
@@ -75,6 +79,25 @@ public class Traversal {
                 root = null;
             }else{
                 root = node.right;
+            }
+        }
+    }
+
+    //层次遍历
+    public static void levelOrder(TreeNode root){
+        Queue<TreeNode> queue = new LinkedList();
+        queue.add(root);
+        while (!queue.isEmpty()){
+            TreeNode node = queue.poll();
+            System.out.println(node.left);
+
+            TreeNode left = node.left;
+            TreeNode right = node.right;
+            if (left != null){
+                queue.add(left);
+            }
+            if (right != null){
+                queue.add(right);
             }
         }
     }

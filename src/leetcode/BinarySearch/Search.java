@@ -1,5 +1,12 @@
 package leetcode.BinarySearch;
 
+
+/**
+ * 搜索
+ *
+ * @author hubiao
+ * @date 2019/7/18
+ */
 public class Search {
     public static int search(int[] nums, int target) {
         int l = 0;

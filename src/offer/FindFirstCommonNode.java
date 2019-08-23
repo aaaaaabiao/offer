@@ -1,4 +1,9 @@
 package offer;
+
+import jdk.nashorn.internal.ir.IfNode;
+
+import java.util.List;
+
 /**
  * @version: V1.0
  * @author: abiao
@@ -64,4 +69,19 @@ public class FindFirstCommonNode {
 
         return null;
     }
+
+    public ListNode findFirstCommonNode1(ListNode pHead1, ListNode pHead2){
+
+        ListNode l1 = pHead1;
+        ListNode l2 = pHead2;
+        if (l1 == null || l2 == null) {
+            return null;
+        }
+        while (l1 != l2){
+            l1 = l1.next == null ? pHead2 : l1.next;
+            l2 = l2.next == null ? pHead1 : l2.next;
+        }
+        return l1;
+    }
+
 }

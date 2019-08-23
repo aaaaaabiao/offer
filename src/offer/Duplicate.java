@@ -32,7 +32,7 @@ public class Duplicate {
                     duplication[0] = val;
                     return true;
                 }
-
+                //不断交换,使值和下标相等
                 swap(nums,val,i);
             }
         }

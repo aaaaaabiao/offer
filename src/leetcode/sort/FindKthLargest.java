@@ -29,7 +29,6 @@ public class FindKthLargest {
         k = nums.length - k;
         while (l < h){
             int j = partition(nums,l,h);
-
             if (j == k){
                 return nums[j];
             }else if(k > j){
@@ -45,7 +44,10 @@ public class FindKthLargest {
         int i = l;
         int j = h+1;
         while (true){
+            //从前往后找到第一个大于nums[l]的元素
             while (nums[++i] < nums[l] && i < h);
+
+            //从后往前找到第一个小于nums[l]的元素
             while (nums[--j] > nums[l] && j > l);
 
             if (i >= j){
@@ -53,6 +55,7 @@ public class FindKthLargest {
             }
             swap(nums,i,j);
         }
+        //注意最后是从后往前的指针,即j。因为要把小的放到最前面。
         swap(nums,l,j);
         return j;
     }

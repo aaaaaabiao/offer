@@ -5,7 +5,7 @@ package leetcode.BinarySearch;
  * @author: abiao
  * @className: SingleNonDuplicate
  * @packageName: leetcode.BinarySearch
- * @description: 找到数组中只出现过一次的元素
+ * @description: 有序数组中的单一元素
  * @data: 2019/1/22
  **/
 public class SingleNonDuplicate {

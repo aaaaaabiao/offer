@@ -1,6 +1,6 @@
 package offer;
 
-import java.util.HashMap;
+
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -21,21 +21,28 @@ public class DeleteDuplication {
         }
     }
     public static ListNode deleteDuplication(ListNode pHead) {
+        //边界条件
         if (pHead == null) return null;
+        //当前节点
         ListNode cur = pHead;
+        //前一个节点
         ListNode pre = new ListNode(0);
         pre.next = cur;
+        //后一个节点
         ListNode post = cur.next;
 
         while (cur != null && (post = cur.next) != null){
             if (cur.val != post.val){
                 pre = cur;
             }else {
+                //找到第一个与当前节点不相等的节点
                 while (post != null && cur.val == post.val){
                     post = post.next;
                 }
 
+
                 if (pre.next == pHead){
+                    //说明第一个元素就是重复元素
                     pHead = post;
                 }
 
@@ -48,6 +55,7 @@ public class DeleteDuplication {
         return pHead;
     }
 
+    //递归解法
     public static ListNode deleteDuplication1(ListNode pHead) {
 
         if (pHead == null || pHead.next == null) return pHead;
