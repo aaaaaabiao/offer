@@ -2,6 +2,12 @@ package multithreading;
 
 import java.util.concurrent.Semaphore;
 
+/**
+ * 使用信号量的方式来实现交替打印
+ *
+ * @author hubiao
+ * @date 2019/8/23
+ */
 public class AlternatePrint {
     public static class print implements Runnable{
         private Semaphore self;

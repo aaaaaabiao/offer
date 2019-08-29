@@ -36,20 +36,24 @@ public class FirstAppearingOnce {
         Queue<Character> queue = new LinkedList();
         int[] chs = new int[256];
         //Insert one char from stringstream
-        public void Insert(char ch)
-        {
+        public void Insert(char ch) {
             chs[ch]++;
             queue.add(ch);
+            //一直出队,直到没有出现过的元素
             while(!queue.isEmpty() && chs[queue.peek()] > 1){
                 queue.poll();
             }
         }
         //return the first appearence once char in current stringstream
-        public char FirstAppearingOnce()
-        {
+        public char FirstAppearingOnce() {
             return queue.isEmpty() ? '#' : queue.peek();
         }
     }
+
+
+
+
+
 
     private LinkedHashMap<Character,Boolean> map = new LinkedHashMap<>();
 
