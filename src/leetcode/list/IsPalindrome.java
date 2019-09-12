@@ -1,5 +1,10 @@
 package leetcode.list;
-
+/**
+ * 判断链表是不是回文
+ *
+ * @author hubiao
+ * @date 2019/8/29
+ */
 public class IsPalindrome {
     public static class ListNode {
         int val;
