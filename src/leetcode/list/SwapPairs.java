@@ -1,5 +1,7 @@
 package leetcode.list;
 
+import java.util.List;
+
 public class SwapPairs {
 
     public static class ListNode {
@@ -62,6 +64,22 @@ public class SwapPairs {
         return d.next;
     }
 
+    public static ListNode swapPairsV1(ListNode head) {
+        ListNode dump = new ListNode(0);
+        dump.next = head;
+        ListNode pre = dump;
+        while (pre.next != null && pre.next.next != null) {
+            ListNode n1 = pre.next;
+            ListNode n2 = pre.next.next;
+            ListNode next = n2.next;
+            n2.next = n1;
+            n1.next = next;
+            pre.next = n2;
+            pre = n1;
+        }
+        return dump.next;
+    }
+
 
     public static void main(String[] args){
         ListNode l1 = new ListNode(1);
@@ -73,6 +91,9 @@ public class SwapPairs {
         l2.next = l3;
         l3.next = l4;
 
-        ListNode ret = swapPairs(l1);
+//        ListNode ret = swapPairs(l1);
+
+        ListNode r = swapPairsV1(l1);
+
     }
 }

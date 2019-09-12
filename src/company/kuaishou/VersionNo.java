@@ -42,6 +42,20 @@ public class VersionNo {
 
     }
 
+    public String getMinVersion(String[] list) {
+        if (list == null || list.length == 0) {
+            return null;
+        }
+        String min = list[0];
+        for (int i = 1; i < list.length; i++) {
+            String str = list[i];
+            if (vertify(str,min)) {
+                min = str;
+            }
+        }
+        return min;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
